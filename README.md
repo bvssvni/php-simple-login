@@ -1,8 +1,11 @@
 php-simple-login
 ================
 
-Login using a hard coded hashed password in PHP file without username.
-GPL license
+Login using a hard coded hashed password in PHP file without username.  
+LGPL license  
+See 'login.php' for license details.  
+
+You can study 'example-login.php' to see it in action.  
 
 #How To Use PHP Simple Login
 
@@ -25,6 +28,18 @@ Here are a short explaination of the settings:
     $login_admin_flag     - The key to the $_SESSION variable that tells the user is admin.
     $login_language       - The user interface language.
     $login_interface_text - The array containing user interface text in the different languages.
+
+##CSS Formatting
+
+The generated HTML by the PHP script puts some ids in the tags.  
+These ids can be used to control the look in CSS.
+
+    #editLink {}
+    #logoutForm {}
+    #loginForm {}
+    #loginContainer {}
+
+You should only have one login link at the entire page at a time.
 
 ##SHA1 Hash
 
