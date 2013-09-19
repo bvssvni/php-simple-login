@@ -117,7 +117,7 @@ function login()
 	else
 	{
 		echo "<a id=\"editLink\" href=\"#\" onclick=\"document.getElementById('loginForm').style.display = 'block';" .
-		"document.getElementById('editLink').style.display = 'none'; document.getElementById('login_error').style.display = 'none';" .
+		"document.getElementById('editLink').style.display = 'none'; document.getElementById('loginErrorLabel').style.display = 'none';" .
 		"return false;\">" . login_text("editLink") . "</a>\n";
 		echo "<div id=\"loginForm\" style=\"display: none;\">\n";
 	
@@ -132,7 +132,7 @@ function login()
 	
 	if ($login_tmp_error_message !== "")
 	{
-		echo "<font id=\"login_error\">" . $login_tmp_error_message . "</font>\n";
+		echo "<font id=\"loginErrorLabel\">" . $login_tmp_error_message . "</font>\n";
 	}
 
 	echo "</div>\n";
