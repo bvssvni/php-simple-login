@@ -26,7 +26,7 @@ session_start();
 
 $login_hash = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8";
 $login_admin_flag = "admin";
-$login_language = "no";
+$login_language = "en";
 
 $login_interface_text = array(
 	"editLink" => array(
@@ -101,12 +101,12 @@ function login()
 {
 	global $login_admin_flag;
 	
-	echo "<div style=\"float: right;\">\n";
+	echo "<div id=\"loginContainer\">\n";
 	
 	$admin = $_SESSION[$login_admin_flag];
 	if ($admin)
 	{
-		echo "<form action=\"" . $_SERVER["PATH_INFO"] . "\" method=\"POST\">\n";
+		echo "<form id=\"logoutForm\" action=\"" . $_SERVER["PATH_INFO"] . "\" method=\"POST\">\n";
 		echo "<input type=\"hidden\" value=\"logout\" name=\"action\" />\n";
 		echo "<input type=\"submit\" value=\"" . login_text("logoutButton") . "\" />\n";
 		echo "</form>\n";
