@@ -27,7 +27,6 @@ session_start();
 $login_hash = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8";
 $login_admin_flag = "admin";
 $login_language = "en";
-
 $login_interface_text = array(
 	"editLink" => array(
 		"en" => "edit",
@@ -46,6 +45,8 @@ $login_interface_text = array(
 		"no" => "feil passord",
 	),
 );
+
+$login_tmp_error_message = "";
 
 login_login();
 login_logout();
@@ -72,6 +73,7 @@ function login_login()
 {
 	global $login_hash;
 	global $login_admin_flag;
+	global $login_tmp_error_message;
 	$action = $_POST["action"];
 	if ($action !== "login") {return;}
 	
@@ -83,7 +85,7 @@ function login_login()
 	}
 	else
 	{
-		echo "<font color=\"red\">" . login_text("wrongPasswordError") . "</font>\n";
+		$login_tmp_error_message = login_text("wrongPasswordError");
 		$_SESSION[$login_admin_flag] = FALSE;
 	}
 }
@@ -100,6 +102,7 @@ function login_logout()
 function login()
 {
 	global $login_admin_flag;
+	global $login_tmp_error_message;
 	
 	echo "<div id=\"loginContainer\">\n";
 	
@@ -114,7 +117,7 @@ function login()
 	else
 	{
 		echo "<a id=\"editLink\" href=\"#\" onclick=\"document.getElementById('loginForm').style.display = 'block';" .
-		"document.getElementById('editLink').style.display = 'none';" .
+		"document.getElementById('editLink').style.display = 'none'; document.getElementById('login_error').style.display = 'none';" .
 		"return false;\">" . login_text("editLink") . "</a>\n";
 		echo "<div id=\"loginForm\" style=\"display: none;\">\n";
 	
@@ -125,6 +128,11 @@ function login()
 		echo "</form>\n";
 		
 		echo "</div>\n";
+	}
+	
+	if ($login_tmp_error_message !== "")
+	{
+		echo "<font id=\"login_error\">" . $login_tmp_error_message . "</font>\n";
 	}
 
 	echo "</div>\n";
