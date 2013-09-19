@@ -38,6 +38,7 @@ These ids can be used to control the look in CSS.
     #logoutForm {}
     #loginForm {}
     #loginContainer {}
+    $errorErrorLabel {}
 
 You should only have one login link at the entire page at a time.
 
